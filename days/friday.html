@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friday — Full Body + Shoulders | 24-Week Tracker</title>
+<meta name="description" content="Friday workout checkbook: Push-ups, One-Arm Rows, Pike Push-ups, Lateral Raises, Squats, RDL, Reverse Crunches, Plank.">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-brand">⚡ <span>24-Week</span> Transformation</div>
+  <div class="nav-links">
+    <a href="../index.html">Home</a>
+    <a href="monday.html">Monday</a>
+    <a href="wednesday.html">Wednesday</a>
+    <a href="friday.html" class="active">Friday</a>
+    <a href="../calendar.html">Calendar</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <img src="../assets/images/friday.jpg" alt="Friday Full Body Exercises">
+  <div class="hero-overlay" style="background:linear-gradient(90deg,rgba(15,31,61,.88) 40%,transparent);">
+    <div class="hero-badge" style="background:#8b5cf6;">Friday — Day 3</div>
+    <h1>Full Body<br><em>+ Shoulders &amp; Back</em></h1>
+    <p>8 exercises · 3 sets each · 45–55 min target</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="sec-header">
+    <div class="sec-num" style="background:#8b5cf6;">1</div>
+    <h2>Session Details<small>Fill in week number and date before logging</small></h2>
+  </div>
+
+  <div class="log-meta">
+    <div class="field"><label>Week #</label><input type="number" id="weekNum" min="1" max="24" placeholder="1–24"></div>
+    <div class="field"><label>Date</label><input type="date" id="sessionDate"></div>
+    <div class="field"><label>Session Feel (1–5)</label><input type="number" id="sessionFeel" min="1" max="5" placeholder="1–5"></div>
+    <div class="check-field"><input type="checkbox" id="warmup"><label for="warmup">Warm-up done</label></div>
+    <div class="check-field"><input type="checkbox" id="cooldown"><label for="cooldown">Cool-down done</label></div>
+  </div>
+
+  <div class="callout">
+    <strong>Friday — Full Body:</strong> Push-ups · One-Arm Backpack Rows · Pike Push-ups · Lateral Raises · Bodyweight Squats · Backpack RDL · Reverse Crunches · Plank. Full-body session — end of the week, so prioritise technique over load. Well done for getting here.
+  </div>
+
+  <div class="ex-img-wrap">
+    <img src="../assets/images/friday.jpg" alt="Friday Exercise Illustrations" loading="lazy">
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-num" style="background:#8b5cf6;">✓</div>
+    <h2>Exercise Checkbook<small>8 exercises — log each as you complete it</small></h2>
+  </div>
+
+  <!-- ── 1. Push-ups ── -->
+  <div class="log-row">
+    <div class="log-row-header" style="background:linear-gradient(135deg,var(--navy),#2d1b6b);">
+      <h4>① Push-ups</h4><span class="prescribed">3 sets · 8–12 reps</span>
+    </div>
+    <div class="log-row-body">
+      <div class="log-field"><label>Variation</label><input type="text" id="pu-var" placeholder="Standard / Wide / Knee"></div>
+      <div class="log-field"><label>Sets Completed</label><input type="number" id="pu-sets" min="0" max="5" placeholder="0–3"></div>
+      <div class="log-field"><label>Reps (1 / 2 / 3)</label><input type="text" id="pu-reps" placeholder="e.g. 12, 11, 10"></div>
+      <div class="log-field"><label>Rest (sec)</label><input type="number" id="pu-rest" placeholder="60–90"></div>
+      <div class="log-field"><label>Difficulty (1–5)</label><div class="difficulty-stars" id="pu-stars"><button class="star-btn" onclick="setStar('pu',1)">★</button><button class="star-btn" onclick="setStar('pu',2)">★</button><button class="star-btn" onclick="setStar('pu',3)">★</button><button class="star-btn" onclick="setStar('pu',4)">★</button><button class="star-btn" onclick="setStar('pu',5)">★</button></div><input type="hidden" id="pu-diff" value="0"></div>
+      <div class="log-field" style="grid-column:span 2;"><label>Notes</label><textarea id="pu-notes" placeholder="Technique observations..."></textarea></div>
+    </div>
+  </div>
+
+  <!-- ── 2. One-Arm Rows ── -->
+  <div class="log-row">
+    <div class="log-row-header" style="background:linear-gradient(135deg,var(--navy),#2d1b6b);">
+      <h4>② One-Arm Backpack Rows <span style="font-weight:400;font-size:11px;opacity:.7">(each arm)</span></h4><span class="prescribed">3 sets · 8–10 reps / arm</span>
+    </div>
+    <div class="log-row-body">
+      <div class="log-field"><label>Backpack Load (kg)</label><input type="number" id="or-load" placeholder="e.g. 4" step="0.5"></div>
+      <div class="log-field"><label>Sets Completed</label><input type="number" id="or-sets" min="0" max="5" placeholder="0–3"></div>
+      <div class="log-field"><label>Reps/arm (1 / 2 / 3)</label><input type="text" id="or-reps" placeholder="e.g. 10, 9, 8"></div>
+      <div class="log-field"><label>Rest (sec)</label><input type="number" id="or-rest" placeholder="60–90"></div>
+      <div class="log-field"><label>Difficulty (1–5)</label><div class="difficulty-stars" id="or-stars"><button class="star-btn" onclick="setStar('or',1)">★</button><button class="star-btn" onclick="setStar('or',2)">★</button><button class="star-btn" onclick="setStar('or',3)">★</button><button class="star-btn" onclick="setStar('or',4)">★</button><button class="star-btn" onclick="setStar('or',5)">★</button></div><input type="hidden" id="or-diff" value="0"></div>
+      <div class="log-field" style="grid-column:span 2;"><label>Notes</label><textarea id="or-notes" placeholder="e.g. elbow drove back well, no hip rotation"></textarea></div>
+    </div>
+  </div>
+
+  <!-- ── 3. Pike Push-ups ── -->
+  <div class="log-row">
+    <div class="log-row-header" style="background:linear-gradient(135deg,var(--navy),#2d1b6b);">
+      <h4>③ Pike Push-ups</h4><span class="prescribed">3 sets · 8–10 reps</span>
+    </div>
+    <div class="log-row-body">
+      <div class="log-field"><label>Variation</label><input type="text" id="pk-var" placeholder="Standard / Feet elevated"></div>
+      <div class="log-field"><label>Sets Completed</label><input type="number" id="pk-sets" min="0" max="5" placeholder="0–3"></div>
+      <div class="log-field"><label>Reps (1 / 2 / 3)</label><input type="text" id="pk-reps" placeholder="e.g. 9, 8, 7"></div>
+      <div class="log-field"><label>Rest (sec)</label><input type="number" id="pk-rest" placeholder="60–90"></div>
+      <div class="log-field"><label>Difficulty (1–5)</label><div class="difficulty-stars" id="pk-stars"><button class="star-btn" onclick="setStar('pk',1)">★</button><button class="star-btn" onclick="setStar('pk',2)">★</button><button class="star-btn" onclick="setStar('pk',3)">★</button><button class="star-btn" onclick="setStar('pk',4)">★</button><button class="star-btn" onclick="setStar('pk',5)">★</button></div><input type="hidden" id="pk-diff" value="0"></div>
+      <div class="log-field" style="grid-column:span 2;"><label>Notes</label><textarea id="pk-notes" placeholder="Technique notes..."></textarea></div>
+    </div>
+  </div>
+
+  <!-- ── 4. Lateral Raises ── -->
+  <div class="log-row">
+    <div class="log-row-header" style="background:linear-gradient(135deg,var(--navy),#2d1b6b);">
+      <h4>④ Lateral Raises</h4><span class="prescribed">3 sets · 12–15 reps</span>
+    </div>
+    <div class="log-row-body">
+      <div class="log-field"><label>Item Used / Load</label><input type="text" id="lr-var" placeholder="e.g. 500ml bottles"></div>
+      <div class="log-field"><label>Approx Weight (kg)</label><input type="number" id="lr-load" placeholder="e.g. 0.5" step="0.1"></div>
+      <div class="log-field"><label>Sets Completed</label><input type="number" id="lr-sets" min="0" max="5" placeholder="0–3"></div>
+      <div class="log-field"><label>Reps (1 / 2 / 3)</label><input type="text" id="lr-reps" placeholder="e.g. 15, 14, 12"></div>
+      <div class="log-field"><label>Difficulty (1–5)</label><div class="difficulty-stars" id="lr-stars"><button class="star-btn" onclick="setStar('lr',1)">★</button><button class="star-btn" onclick="setStar('lr',2)">★</button><button class="star-btn" onclick="setStar('lr',3)">★</button><button class="star-btn" onclick="setStar('lr',4)">★</button><button class="star-btn" onclick="setStar('lr',5)">★</button></div><input type="hidden" id="lr-diff" value="0"></div>
+      <div class="log-field" style="grid-column:span 2;"><label>Notes</label><textarea id="lr-notes" placeholder="Technique notes..."></textarea></div>
+    </div>
+  </div>
+
+  <!-- ── 5. Bodyweight Squats ── -->
+  <div class="log-row">
+    <div class="log-row-header" style="background:linear-gradient(135deg,var(--navy),#2d1b6b);">
+      <h4>⑤ Bodyweight Squats</h4><span class="prescribed">3 sets · 12–15 reps</span>
+    </div>
+    <div class="log-row-body">
+      <div class="log-field"><label>Variation</label><input type="text" id="sq-var" placeholder="Standard / Pause / Jump"></div>
+      <div class="log-field"><label>Sets Completed</label><input type="number" id="sq-sets" min="0" max="5" placeholder="0–3"></div>
+      <div class="log-field"><label>Reps (1 / 2 / 3)</label><input type="text" id="sq-reps" placeholder="e.g. 15, 14, 13"></div>
+      <div class="log-field"><label>Rest (sec)</label><input type="number" id="sq-rest" placeholder="60–90"></div>
+      <div class="log-field"><label>Difficulty (1–5)</label><div class="difficulty-stars" id="sq-stars"><button class="star-btn" onclick="setStar('sq',1)">★</button><button class="star-btn" onclick="setStar('sq',2)">★</button><button class="star-btn" onclick="setStar('sq',3)">★</button><button class="star-btn" onclick="setStar('sq',4)">★</button><button class="star-btn" onclick="setStar('sq',5)">★</button></div><input type="hidden" id="sq-diff" value="0"></div>
+      <div class="log-field" style="grid-column:span 2;"><label>Notes</label><textarea id="sq-notes" placeholder="Technique notes..."></textarea></div>
+    </div>
+  </div>
+
+  <!-- ── 6. RDL ── -->
+  <div class="log-row">
+    <div class="log-row-header" style="background:linear-gradient(135deg,var(--navy),#2d1b6b);">
+      <h4>⑥ Backpack Romanian Deadlift</h4><span class="prescribed">3 sets · 10–12 reps</span>
+    </div>
+    <div class="log-row-body">
+      <div class="log-field"><label>Backpack Load (kg)</label><input type="number" id="rd-load" placeholder="e.g. 4" step="0.5"></div>
+      <div class="log-field"><label>Sets Completed</label><input type="number" id="rd-sets" min="0" max="5" placeholder="0–3"></div>
+      <div class="log-field"><label>Reps (1 / 2 / 3)</label><input type="text" id="rd-reps" placeholder="e.g. 12, 11, 10"></div>
+      <div class="log-field"><label>Rest (sec)</label><input type="number" id="rd-rest" placeholder="60–90"></div>
+      <div class="log-field"><label>Difficulty (1–5)</label><div class="difficulty-stars" id="rd-stars"><button class="star-btn" onclick="setStar('rd',1)">★</button><button class="star-btn" onclick="setStar('rd',2)">★</button><button class="star-btn" onclick="setStar('rd',3)">★</button><button class="star-btn" onclick="setStar('rd',4)">★</button><button class="star-btn" onclick="setStar('rd',5)">★</button></div><input type="hidden" id="rd-diff" value="0"></div>
+      <div class="log-field" style="grid-column:span 2;"><label>Notes</label><textarea id="rd-notes" placeholder="Spine position, hamstring stretch..."></textarea></div>
+    </div>
+  </div>
+
+  <!-- ── 7. Reverse Crunches ── -->
+  <div class="log-row">
+    <div class="log-row-header" style="background:linear-gradient(135deg,var(--navy),#2d1b6b);">
+      <h4>⑦ Reverse Crunches</h4><span class="prescribed">3 sets · 12–15 reps</span>
+    </div>
+    <div class="log-row-body">
+      <div class="log-field"><label>Variation</label><input type="text" id="rc-var" placeholder="Standard / Slow tempo"></div>
+      <div class="log-field"><label>Sets Completed</label><input type="number" id="rc-sets" min="0" max="5" placeholder="0–3"></div>
+      <div class="log-field"><label>Reps (1 / 2 / 3)</label><input type="text" id="rc-reps" placeholder="e.g. 15, 13, 12"></div>
+      <div class="log-field"><label>Rest (sec)</label><input type="number" id="rc-rest" placeholder="45–60"></div>
+      <div class="log-field"><label>Difficulty (1–5)</label><div class="difficulty-stars" id="rc-stars"><button class="star-btn" onclick="setStar('rc',1)">★</button><button class="star-btn" onclick="setStar('rc',2)">★</button><button class="star-btn" onclick="setStar('rc',3)">★</button><button class="star-btn" onclick="setStar('rc',4)">★</button><button class="star-btn" onclick="setStar('rc',5)">★</button></div><input type="hidden" id="rc-diff" value="0"></div>
+      <div class="log-field" style="grid-column:span 2;"><label>Notes</label><textarea id="rc-notes" placeholder="Control on lowering phase, no momentum..."></textarea></div>
+    </div>
+  </div>
+
+  <!-- ── 8. Plank ── -->
+  <div class="log-row">
+    <div class="log-row-header" style="background:linear-gradient(135deg,var(--navy),#2d1b6b);">
+      <h4>⑧ Plank</h4><span class="prescribed">3 sets · 20–45 s</span>
+    </div>
+    <div class="log-row-body">
+      <div class="log-field"><label>Variation</label><input type="text" id="pl-var" placeholder="Forearm / Straight-arm"></div>
+      <div class="log-field"><label>Sets Completed</label><input type="number" id="pl-sets" min="0" max="5" placeholder="0–3"></div>
+      <div class="log-field"><label>Duration s (1 / 2 / 3)</label><input type="text" id="pl-reps" placeholder="e.g. 35, 30, 30"></div>
+      <div class="log-field"><label>Rest (sec)</label><input type="number" id="pl-rest" placeholder="45–60"></div>
+      <div class="log-field"><label>Difficulty (1–5)</label><div class="difficulty-stars" id="pl-stars"><button class="star-btn" onclick="setStar('pl',1)">★</button><button class="star-btn" onclick="setStar('pl',2)">★</button><button class="star-btn" onclick="setStar('pl',3)">★</button><button class="star-btn" onclick="setStar('pl',4)">★</button><button class="star-btn" onclick="setStar('pl',5)">★</button></div><input type="hidden" id="pl-diff" value="0"></div>
+      <div class="log-field" style="grid-column:span 2;"><label>Notes</label><textarea id="pl-notes" placeholder="Hip level, glutes engaged..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="session-notes">
+    <h4>Overall Session Notes — Week Wrap-up</h4>
+    <textarea id="sessionNotes" placeholder="How did the full week feel? What improved? What needs work next week?"></textarea>
+  </div>
+
+  <div style="display:flex;gap:12px;align-items:center;margin-top:20px;flex-wrap:wrap;">
+    <button class="save-btn" onclick="saveSession()">💾 Save This Session</button>
+    <button class="save-btn" onclick="clearSession()" style="background:linear-gradient(135deg,#64748b,#94a3b8);">🗑 Clear Form</button>
+    <a href="../calendar.html" class="save-btn" style="display:inline-block;background:linear-gradient(135deg,var(--navy),var(--navy-light));">📅 View Calendar</a>
+    <a href="monday.html" class="save-btn" style="display:inline-block;background:linear-gradient(135deg,#3b82f6,#60a5fa);">↩ Next Monday</a>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">✅ Week complete! Session saved.</div>
+
+<footer class="site-footer">
+  <strong>24-Week Lean Athletic Transformation</strong> &nbsp;·&nbsp; Friday: Full Body + Shoulders &amp; Back &nbsp;·&nbsp; Data stored locally in your browser.
+</footer>
+
+<script>
+var EXERCISES=['pu','or','pk','lr','sq','rd','rc','pl'];
+var DAY='fri';
+function setStar(p,v){
+  document.getElementById(p+'-diff').value=v;
+  document.querySelectorAll('#'+p+'-stars .star-btn').forEach(function(b,i){b.classList.toggle('active',i<v);});
+  autoSave();
+}
+function getKey(){return 'session_'+DAY+'_w'+(document.getElementById('weekNum').value||'x');}
+function autoSave(){try{localStorage.setItem(getKey(),JSON.stringify(buildData()));}catch(e){}}
+function buildData(){
+  var d={week:document.getElementById('weekNum').value,date:document.getElementById('sessionDate').value,feel:document.getElementById('sessionFeel').value,warmup:document.getElementById('warmup').checked,cooldown:document.getElementById('cooldown').checked,sessionNotes:document.getElementById('sessionNotes').value,exercises:{}};
+  EXERCISES.forEach(function(p){
+    var ex={};
+    ['var','sets','reps','rest','diff','notes','load'].forEach(function(f){var el=document.getElementById(p+'-'+f);if(el)ex[f]=el.value;});
+    d.exercises[p]=ex;
+  });
+  return d;
+}
+function saveSession(){
+  var d=buildData();if(!d.week){alert('Enter week number first.');return;}
+  localStorage.setItem(getKey(),JSON.stringify(d));
+  localStorage.setItem('week_'+d.week+'_fri_done','1');
+  var t=document.getElementById('toast');t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2500);
+}
+function clearSession(){
+  if(!confirm('Clear all fields?'))return;
+  EXERCISES.forEach(function(p){
+    ['var','sets','reps','rest','notes','load'].forEach(function(f){var el=document.getElementById(p+'-'+f);if(el)el.value='';});
+    document.getElementById(p+'-diff').value=0;
+    document.querySelectorAll('#'+p+'-stars .star-btn').forEach(function(b){b.classList.remove('active');});
+  });
+  document.getElementById('sessionNotes').value='';
+  document.getElementById('sessionFeel').value='';
+}
+function loadSession(){
+  var w=document.getElementById('weekNum').value;if(!w)return;
+  var raw=localStorage.getItem('session_fri_w'+w);if(!raw)return;
+  var d=JSON.parse(raw);
+  if(d.date)document.getElementById('sessionDate').value=d.date;
+  if(d.feel)document.getElementById('sessionFeel').value=d.feel;
+  document.getElementById('warmup').checked=d.warmup||false;
+  document.getElementById('cooldown').checked=d.cooldown||false;
+  document.getElementById('sessionNotes').value=d.sessionNotes||'';
+  if(d.exercises)EXERCISES.forEach(function(p){
+    var ex=d.exercises[p];if(!ex)return;
+    ['var','sets','reps','rest','notes','load'].forEach(function(f){var el=document.getElementById(p+'-'+f);if(el&&ex[f])el.value=ex[f];});
+    if(ex.diff&&ex.diff>0)setStar(p,parseInt(ex.diff));
+  });
+}
+document.getElementById('weekNum').addEventListener('change',loadSession);
+document.querySelectorAll('input,textarea').forEach(function(el){el.addEventListener('input',autoSave);el.addEventListener('change',autoSave);});
+document.getElementById('sessionDate').value=new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>

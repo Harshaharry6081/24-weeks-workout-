@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>24-Week Lean Athletic Transformation Tracker</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --navy:      #0f1f3d;
+  --navy-mid:  #1a3260;
+  --navy-light:#243f7a;
+  --teal:      #2d9b8a;
+  --teal-light:#4ebdac;
+  --teal-pale: #d4f0ec;
+  --ink:       #1e293b;
+  --muted:     #64748b;
+  --rule:      #cbd5e1;
+  --paper:     #ffffff;
+  --offwhite:  #f8fafc;
+  --accent:    #e2f4f1;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 10pt;
+  color: var(--ink);
+  background: var(--offwhite);
+  line-height: 1.5;
+}
+
+@media print {
+  body { background: white; font-size: 9pt; }
+  .page { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; }
+  .section-break { page-break-before: always; }
+  .no-break { page-break-inside: avoid; }
+  @page { margin: 12mm 14mm; }
+  @page landscape { size: A4 landscape; margin: 10mm 12mm; }
+  .landscape-page { page: landscape; }
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--paper);
+  margin: 20px auto;
+  padding: 18mm 16mm 16mm;
+  box-shadow: 0 4px 24px rgba(0,0,0,.12);
+  border-radius: 4px;
+}
+.page.landscape-page {
+  width: 297mm;
+  min-height: 210mm;
+  padding: 14mm 14mm 12mm;
+}
+
+/* COVER */
+.cover {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; min-height: 240mm; text-align: center; gap: 0;
+}
+.cover-badge {
+  background: var(--teal); color: white; font-size: 8pt; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase; padding: 5px 18px;
+  border-radius: 20px; margin-bottom: 20px;
+}
+.cover h1 { font-size: 28pt; font-weight: 800; color: var(--navy); line-height: 1.1; margin-bottom: 10px; }
+.cover h1 span { color: var(--teal); }
+.cover-sub { font-size: 12pt; color: var(--muted); margin-bottom: 30px; }
+.cover-divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--teal), var(--navy)); border-radius: 2px; margin: 0 auto 30px; }
+.cover-profile {
+  background: var(--offwhite); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 20px 32px; display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px 32px; text-align: left; margin-bottom: 30px; width: 100%; max-width: 380px;
+}
+.cover-profile .prow { display: flex; justify-content: space-between; gap: 12px; }
+.cover-profile .plabel { color: var(--muted); font-size: 8pt; }
+.cover-profile .pval { font-weight: 600; font-size: 9pt; color: var(--navy); }
+.cover-toc { width: 100%; margin-top: 24px; border-top: 1px solid var(--rule); padding-top: 18px; text-align: left; }
+.cover-toc h3 { font-size: 9pt; color: var(--muted); text-transform: uppercase; letter-spacing:.12em; margin-bottom: 12px; }
+.toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+.toc-item { display: flex; align-items: center; gap: 8px; font-size: 9pt; }
+.toc-num {
+  background: var(--navy); color: white; font-weight: 700; font-size: 7.5pt;
+  width: 20px; height: 20px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+/* SECTION HEADER */
+.section-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 18px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--navy);
+}
+.section-num {
+  background: var(--navy); color: white; font-weight: 800; font-size: 10pt;
+  width: 30px; height: 30px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+.section-header h2 { font-size: 14pt; font-weight: 800; color: var(--navy); line-height: 1; }
+.section-header small { display: block; font-size: 8pt; color: var(--teal); font-weight: 500; margin-top: 2px; }
+
+/* TABLES */
+table { width: 100%; border-collapse: collapse; font-size: 8pt; }
+th {
+  background: var(--navy); color: white; font-weight: 600; font-size: 7.5pt;
+  letter-spacing: .04em; padding: 7px 5px; text-align: center; vertical-align: middle;
+}
+td { border: 1px solid var(--rule); padding: 5px 5px; vertical-align: middle; text-align: center; }
+td.label-cell {
+  background: var(--offwhite); font-weight: 600; font-size: 7.5pt;
+  color: var(--navy-mid); text-align: left; padding-left: 8px;
+}
+tr:nth-child(even) td { background: #fafcff; }
+tr:nth-child(even) td.label-cell { background: #f0f4fa; }
+.write-cell { background: white !important; min-height: 22px; height: 26px; }
+.tall-cell { height: 38px; }
+
+/* CHECKBOX */
+.cb {
+  display: inline-block; width: 14px; height: 14px;
+  border: 1.5px solid var(--navy-mid); border-radius: 2px; vertical-align: middle;
+}
+
+/* CALLOUT BOXES */
+.callout {
+  background: var(--teal-pale); border-left: 4px solid var(--teal);
+  border-radius: 4px; padding: 10px 14px; font-size: 8.5pt;
+  color: var(--navy); margin-bottom: 14px;
+}
+.callout strong { color: var(--teal); }
+.info-box {
+  background: #eef3fb; border-left: 4px solid var(--navy-light);
+  border-radius: 4px; padding: 10px 14px; font-size: 8.5pt;
+  color: var(--navy); margin-bottom: 14px;
+}
+
+/* PHOTO */
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
+.photo-box {
+  border: 1.5px dashed var(--rule); border-radius: 6px; height: 90px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--offwhite); gap: 4px;
+}
+.photo-box .photo-label { font-size: 8pt; font-weight: 600; color: var(--muted); }
+.photo-box .photo-icon { font-size: 22pt; color: var(--rule); }
+.photo-checkpoint { border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+.photo-checkpoint-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.photo-week-badge { background: var(--navy); color: white; font-size: 8pt; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
+.photo-checkpoint-header h4 { font-size: 10pt; font-weight: 700; color: var(--navy); }
+
+/* WEEKLY REVIEW */
+.review-card { border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; margin-bottom: 14px; }
+.review-card h3 { font-size: 9.5pt; font-weight: 700; color: var(--navy); margin-bottom: 12px; border-bottom: 1px solid var(--teal-pale); padding-bottom: 6px; }
+.q-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--rule); }
+.q-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.q-num { background: var(--teal); color: white; font-size: 7pt; font-weight: 700; min-width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.q-content { flex: 1; }
+.q-content p { font-size: 8.5pt; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+.answer-line { width: 100%; height: 22px; border: none; border-bottom: 1px solid var(--rule); background: transparent; font-size: 9pt; outline: none; }
+.yesno { display: flex; gap: 14px; font-size: 8.5pt; flex-wrap: wrap; }
+.yesno label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+
+/* SUMMARY */
+.summary-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.compare-box { border: 1px solid var(--rule); border-radius: 8px; padding: 12px; }
+.compare-box h4 { font-size: 9pt; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+.compare-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed var(--rule); font-size: 8.5pt; }
+.compare-row:last-child { border-bottom: none; }
+.compare-row .cr-label { color: var(--muted); }
+.compare-row .cr-val { font-weight: 600; color: var(--navy); }
+
+/* OVERLOAD */
+.prog-section { margin-bottom: 16px; }
+.prog-section h4 { font-size: 9pt; font-weight: 700; color: var(--navy-mid); background: var(--accent); padding: 6px 10px; border-radius: 4px; margin-bottom: 6px; border-left: 3px solid var(--teal); }
+
+/* MISC */
+.page-subtitle { font-size: 9pt; color: var(--muted); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mt8 { margin-top: 8px; } .mt12 { margin-top: 12px; } .mt16 { margin-top: 16px; }
+.mb8 { margin-bottom: 8px; }
+.inline-note { font-size: 7.5pt; color: var(--muted); font-style: italic; }
+.underline-blank { display: inline-block; border-bottom: 1.5px solid var(--navy); width: 100px; height: 18px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER PAGE ════════════════════════════════════ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-badge">Personal Fitness Workbook</div>
+    <h1>24-Week Lean<br><span>Athletic Transformation</span></h1>
+    <div class="cover-sub">Home Training · Body Weight + Backpack · Mon / Wed / Fri</div>
+    <div class="cover-divider"></div>
+
+    <div class="cover-profile">
+      <div class="prow"><span class="plabel">Height</span><span class="pval">183 cm (6 ft)</span></div>
+      <div class="prow"><span class="plabel">Start Weight</span><span class="pval">68 kg</span></div>
+      <div class="prow"><span class="plabel">Start Waist</span><span class="pval">88 cm</span></div>
+      <div class="prow"><span class="plabel">Experience</span><span class="pval">Beginner</span></div>
+      <div class="prow"><span class="plabel">Location</span><span class="pval">Home</span></div>
+      <div class="prow"><span class="plabel">Duration</span><span class="pval">45–55 min/session</span></div>
+    </div>
+
+    <div style="display:flex; gap:24px; margin-top:4px; margin-bottom:24px;">
+      <div>
+        <div style="font-size:7.5pt; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px;">Programme Start Date</div>
+        <div class="underline-blank" style="width:140px;"></div>
+      </div>
+      <div>
+        <div style="font-size:7.5pt; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px;">Target End Date</div>
+        <div class="underline-blank" style="width:140px;"></div>
+      </div>
+    </div>
+
+    <div class="cover-toc">
+      <h3>Contents</h3>
+      <div class="toc-grid">
+        <div class="toc-item"><div class="toc-num">1</div>24-Week Workout Calendar</div>
+        <div class="toc-item"><div class="toc-num">2</div>Daily Workout Logs</div>
+        <div class="toc-item"><div class="toc-num">3</div>Monthly Body Measurements</div>
+        <div class="toc-item"><div class="toc-num">4</div>Progress Photo Log</div>
+        <div class="toc-item"><div class="toc-num">5</div>Nutrition Tracker</div>
+        <div class="toc-item"><div class="toc-num">6</div>Progressive Overload Tracker</div>
+        <div class="toc-item"><div class="toc-num">7</div>Weekly Review Template</div>
+        <div class="toc-item"><div class="toc-num">8</div>Six-Month Summary</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION 1 — 24-WEEK CALENDAR (landscape) ══════ -->
+<div class="page landscape-page section-break">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2>24-Week Workout Calendar<small>Tick each session when completed · Fill in your own date ranges at the start</small></h2>
+  </div>
+
+  <div class="callout">
+    <strong>How to use:</strong> Write your week start and end dates in the Date Range column. Tick the checkbox after completing each session. Record your average weight (same day and time each week, ideally Monday morning before eating). Rate nutrition consistency 1–5. Keep observations honest.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:4%">Wk</th>
+        <th style="width:10%">Date Range</th>
+        <th style="width:10%">Monday<br><small style="font-weight:400">Upper + Core</small></th>
+        <th style="width:10%">Wednesday<br><small style="font-weight:400">Legs + Core</small></th>
+        <th style="width:10%">Friday<br><small style="font-weight:400">Full Body + Shoulders</small></th>
+        <th style="width:8%">Completion %</th>
+        <th style="width:8%">Avg. Weight (kg)</th>
+        <th style="width:8%">Nutrition 1–5</th>
+        <th style="width:13%">Sleep / Recovery Notes</th>
+        <th style="width:19%">Weekly Observations</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label-cell">1</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">2</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">3</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">4</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">5</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">6</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">7</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">8</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">9</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">10</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">11</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">12</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">13</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">14</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">15</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">16</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">17</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">18</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">19</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">20</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">21</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">22</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">23</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">24</td><td class="write-cell"></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"><span class="cb"></span></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+    </tbody>
+  </table>
+  <p class="inline-note mt8">Completion % = sessions completed ÷ 3 × 100. Nutrition 1 = poor, 5 = excellent. Weigh at the same time and conditions each week.</p>
+</div>
+
+
+<!-- ═══ SECTION 2 — MONDAY LOG (landscape) ════════════ -->
+<div class="page landscape-page section-break">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2>Workout Log — Monday<small>Upper Body + Core · 45–55 min · Print one copy per Monday session</small></h2>
+  </div>
+
+  <div class="callout">
+    <strong>Monday exercises:</strong> Push-ups · Backpack Rows · Pike Push-ups · Lateral Raises · Backpack Biceps Curls · Plank.
+    Record the variation used when taking an easier option (e.g. knee push-ups). Rate difficulty 1 = easy, 5 = maximum effort.
+  </div>
+
+  <div style="display:flex; gap:20px; align-items:center; margin-bottom:12px; flex-wrap:wrap;">
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Week:</strong><div class="underline-blank" style="width:48px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Date:</strong><div class="underline-blank" style="width:110px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Session feel (1–5):</strong><div class="underline-blank" style="width:38px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Warm-up:</strong><span class="cb"></span></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Cool-down:</strong><span class="cb"></span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:17%">Exercise</th>
+        <th style="width:9%">Variation Used</th>
+        <th style="width:7%">Sets Planned</th>
+        <th style="width:7%">Reps Planned</th>
+        <th style="width:6%">Sets Done</th>
+        <th style="width:9%">Reps Done (per set)</th>
+        <th style="width:9%">Backpack Load (kg)</th>
+        <th style="width:7%">Rest (sec)</th>
+        <th style="width:7%">Difficulty 1–5</th>
+        <th style="width:22%">Technique Notes / Easier Variation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label-cell">Push-ups</td><td class="write-cell"></td><td>3</td><td>8–12</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Backpack Rows<br><span class="inline-note">table / chair</span></td><td class="write-cell"></td><td>3</td><td>8–12</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Pike Push-ups</td><td class="write-cell"></td><td>3</td><td>8–10</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Lateral Raises<br><span class="inline-note">water bottles</span></td><td class="write-cell"></td><td>3</td><td>12–15</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Backpack Biceps Curls</td><td class="write-cell"></td><td>3</td><td>10–12</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Plank<br><span class="inline-note">record time in seconds</span></td><td class="write-cell"></td><td>3</td><td>20–45 s</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:12px; border:1px solid var(--rule); border-radius:6px; padding:10px 12px;">
+    <strong style="font-size:8pt; color:var(--navy);">Session Notes</strong>
+    <div style="margin-top:6px; border-bottom:1px solid var(--rule); height:18px;"></div>
+    <div style="margin-top:8px; border-bottom:1px solid var(--rule); height:18px;"></div>
+    <div style="margin-top:8px; border-bottom:1px solid var(--rule); height:18px;"></div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION 2 — WEDNESDAY LOG (landscape) ═════════ -->
+<div class="page landscape-page section-break">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2>Workout Log — Wednesday<small>Legs + Core · 45–55 min · Print one copy per Wednesday session</small></h2>
+  </div>
+
+  <div class="callout">
+    <strong>Wednesday exercises:</strong> Bodyweight Squats · Supported Split Squats · Backpack Romanian Deadlift · Glute Bridges · Calf Raises · Dead Bug.
+    Check knee alignment during squats. Maintain a neutral spine through the hip hinge on RDLs.
+  </div>
+
+  <div style="display:flex; gap:20px; align-items:center; margin-bottom:12px; flex-wrap:wrap;">
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Week:</strong><div class="underline-blank" style="width:48px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Date:</strong><div class="underline-blank" style="width:110px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Session feel (1–5):</strong><div class="underline-blank" style="width:38px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Warm-up:</strong><span class="cb"></span></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Cool-down:</strong><span class="cb"></span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%">Exercise</th>
+        <th style="width:9%">Variation Used</th>
+        <th style="width:7%">Sets Planned</th>
+        <th style="width:8%">Reps Planned</th>
+        <th style="width:6%">Sets Done</th>
+        <th style="width:9%">Reps Done (per set)</th>
+        <th style="width:9%">Backpack Load (kg)</th>
+        <th style="width:7%">Rest (sec)</th>
+        <th style="width:7%">Difficulty 1–5</th>
+        <th style="width:20%">Technique Notes / Easier Variation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label-cell">Bodyweight Squats</td><td class="write-cell"></td><td>3</td><td>12–15</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Supported Split Squats<br><span class="inline-note">each leg</span></td><td class="write-cell"></td><td>3</td><td>8–10 / leg</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Backpack Romanian Deadlift</td><td class="write-cell"></td><td>3</td><td>10–12</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Glute Bridges</td><td class="write-cell"></td><td>3</td><td>15–20</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Calf Raises<br><span class="inline-note">step or flat</span></td><td class="write-cell"></td><td>3</td><td>15–20</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Dead Bug<br><span class="inline-note">reps per side</span></td><td class="write-cell"></td><td>3</td><td>8–10 / side</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:12px; border:1px solid var(--rule); border-radius:6px; padding:10px 12px;">
+    <strong style="font-size:8pt; color:var(--navy);">Session Notes</strong>
+    <div style="margin-top:6px; border-bottom:1px solid var(--rule); height:18px;"></div>
+    <div style="margin-top:8px; border-bottom:1px solid var(--rule); height:18px;"></div>
+    <div style="margin-top:8px; border-bottom:1px solid var(--rule); height:18px;"></div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION 2 — FRIDAY LOG (landscape) ════════════ -->
+<div class="page landscape-page section-break">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2>Workout Log — Friday<small>Full Body + Shoulders &amp; Back · 45–55 min · Print one copy per Friday session</small></h2>
+  </div>
+
+  <div class="callout">
+    <strong>Friday exercises:</strong> Push-ups · One-Arm Backpack Rows · Pike Push-ups · Lateral Raises · Bodyweight Squats · Backpack Romanian Deadlift · Reverse Crunches · Plank.
+    Full-body session — prioritise technique over load at end of week.
+  </div>
+
+  <div style="display:flex; gap:20px; align-items:center; margin-bottom:12px; flex-wrap:wrap;">
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Week:</strong><div class="underline-blank" style="width:48px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Date:</strong><div class="underline-blank" style="width:110px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Session feel (1–5):</strong><div class="underline-blank" style="width:38px;"></div></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Warm-up:</strong><span class="cb"></span></div>
+    <div style="font-size:8.5pt; display:flex; align-items:center; gap:6px;"><strong>Cool-down:</strong><span class="cb"></span></div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:17%">Exercise</th>
+        <th style="width:9%">Variation Used</th>
+        <th style="width:7%">Sets Planned</th>
+        <th style="width:8%">Reps Planned</th>
+        <th style="width:6%">Sets Done</th>
+        <th style="width:9%">Reps Done (per set)</th>
+        <th style="width:9%">Backpack Load (kg)</th>
+        <th style="width:7%">Rest (sec)</th>
+        <th style="width:7%">Difficulty 1–5</th>
+        <th style="width:21%">Technique Notes / Easier Variation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label-cell">Push-ups</td><td class="write-cell"></td><td>3</td><td>8–12</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">One-Arm Backpack Rows<br><span class="inline-note">each arm</span></td><td class="write-cell"></td><td>3</td><td>8–10 / arm</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Pike Push-ups</td><td class="write-cell"></td><td>3</td><td>8–10</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Lateral Raises</td><td class="write-cell"></td><td>3</td><td>12–15</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Bodyweight Squats</td><td class="write-cell"></td><td>3</td><td>12–15</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Backpack Romanian Deadlift</td><td class="write-cell"></td><td>3</td><td>10–12</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Reverse Crunches</td><td class="write-cell"></td><td>3</td><td>12–15</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Plank<br><span class="inline-note">time in seconds</span></td><td class="write-cell"></td><td>3</td><td>20–45 s</td><td class="write-cell"></td><td class="write-cell"></td><td>—</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:12px; border:1px solid var(--rule); border-radius:6px; padding:10px 12px;">
+    <strong style="font-size:8pt; color:var(--navy);">Session Notes</strong>
+    <div style="margin-top:6px; border-bottom:1px solid var(--rule); height:18px;"></div>
+    <div style="margin-top:8px; border-bottom:1px solid var(--rule); height:18px;"></div>
+    <div style="margin-top:8px; border-bottom:1px solid var(--rule); height:18px;"></div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION 3 — BODY MEASUREMENTS (landscape) ════ -->
+<div class="page landscape-page section-break">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <h2>Monthly Body Measurements<small>Weeks 1, 4, 8, 12, 16, 20 &amp; 24 · Same time of day each checkpoint</small></h2>
+  </div>
+
+  <div class="callout">
+    <strong>Measurement guidance:</strong> Take all measurements Monday morning before eating, after using the bathroom. Use a soft tape measure, pulled snug but not compressing skin. Keep arms relaxed for chest and arm measurements. Do not pre-fill any future values — record only what you actually measure on the day.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Measurement</th>
+        <th style="width:5%">Wk 1<br><small style="font-weight:400">Baseline</small></th>
+        <th style="width:5%">Wk 4</th>
+        <th style="width:5%">Wk 8</th>
+        <th style="width:5%">Wk 12</th>
+        <th style="width:5%">Wk 16</th>
+        <th style="width:5%">Wk 20</th>
+        <th style="width:5%">Wk 24</th>
+        <th style="width:8%">Total Change</th>
+        <th style="width:35%">Notes (conditions, illness, dietary changes, etc.)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="label-cell">Body Weight (kg)</td>
+        <td style="background:#dbeafe; font-weight:700; text-align:center; font-size:8.5pt;">68</td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell tall-cell"></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Waist Circumference (cm)</td>
+        <td style="background:#dbeafe; font-weight:700; text-align:center; font-size:8.5pt;">88</td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell tall-cell"></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Chest Circumference (cm)<br><span class="inline-note">Across nipple line, exhaled</span></td>
+        <td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell tall-cell"></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Upper-Arm Circumference (cm)<br><span class="inline-note">Dominant arm, relaxed, midpoint</span></td>
+        <td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell tall-cell"></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Thigh Circumference (cm)<br><span class="inline-note">Dominant leg, mid-thigh</span></td>
+        <td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell tall-cell"></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Max Clean Push-ups (reps)<br><span class="inline-note">Full ROM, no pause</span></td>
+        <td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell tall-cell"></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Max Plank Duration (seconds)</td>
+        <td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell tall-cell"></td>
+      </tr>
+      <tr>
+        <td class="label-cell">Backpack Row Load (kg)<br><span class="inline-note">Load used for 3×10 clean reps</span></td>
+        <td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td>
+        <td class="write-cell"></td><td class="write-cell tall-cell"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box mt12">
+    <strong>Note on scale weight:</strong> Body weight can vary ±1–2 kg day-to-day due to hydration, food volume and sleep quality. Use a 4-week rolling average to identify genuine trends. Waist circumference is a more reliable indicator of body composition change than scale weight alone. Weight does not need to increase to indicate muscle development, especially for beginners.
+  </div>
+</div>
+
+
+<!-- ═══ SECTION 4 — PROGRESS PHOTOS (portrait) ═══════ -->
+<div class="page section-break">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <h2>Progress Photo Log<small>7 checkpoints · Front, Side &amp; Back view at each</small></h2>
+  </div>
+
+  <div class="callout">
+    <strong>Consistency reminder — use at every checkpoint:</strong> Same room · Same light source · Same distance from camera · Same camera height (chest level) · Same posture (feet hip-width, arms at sides) · Same time of day · Same minimal clothing · No filters. Inconsistent conditions make comparisons meaningless.
+  </div>
+
+  <div class="photo-checkpoint no-break">
+    <div class="photo-checkpoint-header">
+      <span class="photo-week-badge">Week 1</span>
+      <h4>Starting Baseline</h4>
+      <span style="margin-left:auto; font-size:8pt; color:var(--muted);">Date: <div class="underline-blank" style="width:100px; display:inline-block;"></div></span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Front View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Side View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Back View</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; font-size:8pt;"><strong>Visible notes:</strong><div style="flex:1; border-bottom:1px solid var(--rule); height:18px;"></div></div>
+  </div>
+
+  <div class="photo-checkpoint no-break">
+    <div class="photo-checkpoint-header">
+      <span class="photo-week-badge">Week 4</span>
+      <h4>One Month In</h4>
+      <span style="margin-left:auto; font-size:8pt; color:var(--muted);">Date: <div class="underline-blank" style="width:100px; display:inline-block;"></div></span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Front View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Side View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Back View</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; font-size:8pt;"><strong>Visible notes:</strong><div style="flex:1; border-bottom:1px solid var(--rule); height:18px;"></div></div>
+  </div>
+
+  <div class="photo-checkpoint no-break">
+    <div class="photo-checkpoint-header">
+      <span class="photo-week-badge">Week 8</span>
+      <h4>Two Months In</h4>
+      <span style="margin-left:auto; font-size:8pt; color:var(--muted);">Date: <div class="underline-blank" style="width:100px; display:inline-block;"></div></span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Front View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Side View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Back View</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; font-size:8pt;"><strong>Visible notes:</strong><div style="flex:1; border-bottom:1px solid var(--rule); height:18px;"></div></div>
+  </div>
+</div>
+
+<div class="page section-break">
+  <div class="photo-checkpoint no-break">
+    <div class="photo-checkpoint-header">
+      <span class="photo-week-badge">Week 12</span>
+      <h4>Three Months / Halfway</h4>
+      <span style="margin-left:auto; font-size:8pt; color:var(--muted);">Date: <div class="underline-blank" style="width:100px; display:inline-block;"></div></span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Front View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Side View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Back View</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; font-size:8pt;"><strong>Visible notes:</strong><div style="flex:1; border-bottom:1px solid var(--rule); height:18px;"></div></div>
+  </div>
+
+  <div class="photo-checkpoint no-break">
+    <div class="photo-checkpoint-header">
+      <span class="photo-week-badge">Week 16</span>
+      <h4>Four Months In</h4>
+      <span style="margin-left:auto; font-size:8pt; color:var(--muted);">Date: <div class="underline-blank" style="width:100px; display:inline-block;"></div></span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Front View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Side View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Back View</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; font-size:8pt;"><strong>Visible notes:</strong><div style="flex:1; border-bottom:1px solid var(--rule); height:18px;"></div></div>
+  </div>
+
+  <div class="photo-checkpoint no-break">
+    <div class="photo-checkpoint-header">
+      <span class="photo-week-badge">Week 20</span>
+      <h4>Five Months In</h4>
+      <span style="margin-left:auto; font-size:8pt; color:var(--muted);">Date: <div class="underline-blank" style="width:100px; display:inline-block;"></div></span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Front View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Side View</div></div>
+      <div class="photo-box"><div class="photo-icon">📷</div><div class="photo-label">Back View</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; font-size:8pt;"><strong>Visible notes:</strong><div style="flex:1; border-bottom:1px solid var(--rule); height:18px;"></div></div>
+  </div>
+
+  <div class="photo-checkpoint no-break" style="border-color:var(--teal);">
+    <div class="photo-checkpoint-header">
+      <span class="photo-week-badge" style="background:var(--teal);">Week 24</span>
+      <h4>Final Comparison — Six-Month Result</h4>
+      <span style="margin-left:auto; font-size:8pt; color:var(--muted);">Date: <div class="underline-blank" style="width:100px; display:inline-block;"></div></span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-box" style="border-color:var(--teal);"><div class="photo-icon">📷</div><div class="photo-label">Front View</div></div>
+      <div class="photo-box" style="border-color:var(--teal);"><div class="photo-icon">📷</div><div class="photo-label">Side View</div></div>
+      <div class="photo-box" style="border-color:var(--teal);"><div class="photo-icon">📷</div><div class="photo-label">Back View</div></div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; font-size:8pt;"><strong>Visible changes vs. Week 1:</strong><div style="flex:1; border-bottom:1px solid var(--rule); height:18px;"></div></div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION 5 — NUTRITION TRACKER (landscape) ════ -->
+<div class="page landscape-page section-break">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <h2>Nutrition Tracker<small>Daily protein target 110–130 g · No aggressive calorie restriction · Print 12 copies for 24 weeks</small></h2>
+  </div>
+
+  <div class="callout">
+    <strong>Approach:</strong> Prioritise consistent protein from whole foods (eggs, chicken, fish, lentils, Greek yogurt, cottage cheese). Eat enough to support training and recovery. A moderate, sustainable deficit or maintenance is the goal — not aggressive restriction. Record dietary adjustments and note their effect on energy and body weight over time. Rating: ✓ = target met · ~ = partial · ✗ = missed.
+  </div>
+
+  <p class="inline-note mb8">This sheet covers 2 weeks. Print 12 copies to cover the full 24 weeks. Fill in the week numbers at the start of each block.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:5%">Wk</th>
+        <th style="width:6%">Day</th>
+        <th style="width:9%">Protein Target<br><small style="font-weight:400">110–130 g ✓/~/✗</small></th>
+        <th style="width:9%">Regular Meals<br><small style="font-weight:400">3+ meals ✓/~/✗</small></th>
+        <th style="width:8%">Water Intake<br><small style="font-weight:400">Litres</small></th>
+        <th style="width:9%">Appetite<br><small style="font-weight:400">Low/Normal/High</small></th>
+        <th style="width:8%">Energy Level<br><small style="font-weight:400">1–5</small></th>
+        <th style="width:7%">Weight (kg)<br><small style="font-weight:400">optional</small></th>
+        <th style="width:39%">Notes (food sources, adjustments, cravings, changes)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label-cell" rowspan="7" style="font-weight:700;">__</td><td class="label-cell">Mon</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Tue</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Wed</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Thu</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Fri</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Sat</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Sun</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell" rowspan="7" style="font-weight:700;">__</td><td class="label-cell">Mon</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Tue</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Wed</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Thu</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Fri</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Sat</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      <tr><td class="label-cell">Sun</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══ SECTION 6 — PROGRESSIVE OVERLOAD (landscape) ═ -->
+<div class="page landscape-page section-break">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <h2>Progressive Overload Tracker<small>Record progressions by exercise · Technique must be confirmed before advancing</small></h2>
+  </div>
+
+  <div class="info-box">
+    <strong>Progression rule:</strong> First increase clean repetitions to the top of the prescribed range across all sets. Then increase backpack load or advance to a harder variation. Do <strong>NOT</strong> progress if you experience: joint pain · technique breakdown · excessive soreness · inadequate sleep or recovery. Technique Confirmed = Yes is required before logging a new load or variation.
+  </div>
+
+  <div class="prog-section">
+    <h4>Push-ups — Progression: Knee Push-ups ➜ Standard ➜ Feet Elevated ➜ Wide / Diamond ➜ Weighted</h4>
+    <table>
+      <thead><tr><th style="width:9%">Date</th><th style="width:16%">Current Variation</th><th style="width:8%">Reps Planned</th><th style="width:12%">Reps Achieved (all sets)</th><th style="width:9%">Load (kg)</th><th style="width:10%">Technique OK? Y/N</th><th style="width:16%">Next Target</th><th style="width:20%">Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prog-section">
+    <h4>Backpack Rows (Two-arm &amp; One-arm) — Add weight once 3×12 achieved cleanly; progress to one-arm variation</h4>
+    <table>
+      <thead><tr><th style="width:9%">Date</th><th style="width:16%">Variation / Setup</th><th style="width:8%">Reps Planned</th><th style="width:12%">Reps Achieved</th><th style="width:9%">Load (kg)</th><th style="width:10%">Technique OK? Y/N</th><th style="width:16%">Next Target</th><th style="width:20%">Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prog-section">
+    <h4>Pike Push-ups — Progression: Standard Pike ➜ Elevated Feet Pike ➜ Wall Handstand Hold ➜ Handstand Push-up</h4>
+    <table>
+      <thead><tr><th style="width:9%">Date</th><th style="width:16%">Variation</th><th style="width:8%">Reps Planned</th><th style="width:12%">Reps Achieved</th><th style="width:9%">Load / Note</th><th style="width:10%">Technique OK? Y/N</th><th style="width:16%">Next Target</th><th style="width:20%">Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prog-section">
+    <h4>Squats &amp; Romanian Deadlift — Add load once 3×15 BW squats or 3×12 RDL completed with clean technique</h4>
+    <table>
+      <thead><tr><th style="width:9%">Date</th><th style="width:12%">Exercise</th><th style="width:8%">Reps Planned</th><th style="width:12%">Reps Achieved</th><th style="width:9%">Load (kg)</th><th style="width:10%">Technique OK? Y/N</th><th style="width:16%">Next Target</th><th style="width:24%">Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="write-cell"></td><td class="label-cell">Squats</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="label-cell">Squats</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="label-cell">RDL</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="label-cell">RDL</td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prog-section">
+    <h4>Plank — Progress: 20 s ➜ 30 s ➜ 45 s ➜ Add shoulder taps / leg lifts ➜ Weighted plank</h4>
+    <table>
+      <thead><tr><th style="width:9%">Date</th><th style="width:16%">Variation</th><th style="width:10%">Target Duration (s)</th><th style="width:10%">Achieved (s)</th><th style="width:9%">Load (kg)</th><th style="width:10%">Technique OK? Y/N</th><th style="width:16%">Next Target</th><th style="width:20%">Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td><td class="write-cell"></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION 7 — WEEKLY REVIEW (portrait) ═════════ -->
+<div class="page section-break">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <h2>Weekly Review Template<small>Complete every Sunday · Print 24 copies — one per week</small></h2>
+  </div>
+
+  <p class="page-subtitle">Honest self-assessment only. If something went wrong, document it so you can address it next week. Do not embellish.</p>
+
+  <div style="display:flex; gap:24px; align-items:center; margin-bottom:14px; padding:10px 14px; background:var(--offwhite); border:1px solid var(--rule); border-radius:8px;">
+    <div style="font-size:9pt;"><strong>Week Number:</strong> <div class="underline-blank" style="width:48px; display:inline-block;"></div></div>
+    <div style="font-size:9pt;"><strong>Date completed:</strong> <div class="underline-blank" style="width:120px; display:inline-block;"></div></div>
+    <div style="font-size:9pt;"><strong>Sessions this week:</strong> <div class="underline-blank" style="width:36px; display:inline-block;"></div> / 3</div>
+  </div>
+
+  <div class="review-card">
+    <h3>Weekly Check-in — 7 Questions</h3>
+
+    <div class="q-row">
+      <div class="q-num">1</div>
+      <div class="q-content">
+        <p>Did I complete all three workouts this week? If not, what prevented the missed session(s)?</p>
+        <div class="yesno" style="margin-bottom:5px;">
+          <label><span class="cb"></span> Yes — all three done</label>
+          <label><span class="cb"></span> No — missed:</label>
+          <div class="underline-blank" style="width:180px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-num">2</div>
+      <div class="q-content">
+        <p>Which exercise improved the most? (More reps, better form, less perceived effort)</p>
+        <div class="underline-blank" style="width:100%; height:20px;"></div>
+        <div style="margin-top:5px; font-size:8pt; color:var(--muted);">Specific detail (e.g. "Push-ups: 8 → 10 clean reps"): <div class="underline-blank" style="width:200px; display:inline-block;"></div></div>
+      </div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-num">3</div>
+      <div class="q-content">
+        <p>Did I maintain good technique throughout? Note any form breakdown or compensations observed.</p>
+        <div class="yesno" style="margin-bottom:5px;">
+          <label><span class="cb"></span> Yes — consistently clean</label>
+          <label><span class="cb"></span> Mostly — issues noted:</label>
+        </div>
+        <div class="underline-blank" style="width:100%; height:20px;"></div>
+      </div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-num">4</div>
+      <div class="q-content">
+        <p>Did I hit my protein target? (110–130 g/day on average)</p>
+        <div class="yesno" style="margin-bottom:5px;">
+          <label><span class="cb"></span> Yes — most days on target</label>
+          <label><span class="cb"></span> Partially — roughly half the week</label>
+          <label><span class="cb"></span> No — consistently below</label>
+        </div>
+        <div class="underline-blank" style="width:100%; height:20px;"></div>
+      </div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-num">5</div>
+      <div class="q-content">
+        <p>Was my sleep adequate? (Aim 7–9 h. Poor sleep impairs recovery and muscle development.)</p>
+        <div class="yesno" style="margin-bottom:5px;">
+          <label><span class="cb"></span> Yes — 7+ h most nights</label>
+          <label><span class="cb"></span> Inconsistent</label>
+          <label><span class="cb"></span> No — regularly under 6 h</label>
+        </div>
+        <div class="underline-blank" style="width:100%; height:20px;"></div>
+      </div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-num">6</div>
+      <div class="q-content">
+        <p>Did I experience any unusual joint pain, persistent soreness or excessive fatigue? <em style="font-size:8pt;">(Normal post-session muscle soreness is fine. Sharp or joint pain is not.)</em></p>
+        <div class="yesno" style="margin-bottom:5px;">
+          <label><span class="cb"></span> No unusual pain or fatigue</label>
+          <label><span class="cb"></span> Yes — describe:</label>
+        </div>
+        <div class="underline-blank" style="width:100%; height:20px;"></div>
+      </div>
+    </div>
+
+    <div class="q-row">
+      <div class="q-num">7</div>
+      <div class="q-content">
+        <p>What is my single main goal for next week?</p>
+        <div class="underline-blank" style="width:100%; height:20px;"></div>
+        <div style="margin-top:6px; font-size:8pt; color:var(--muted);">Supporting action I will take: <div class="underline-blank" style="width:260px; display:inline-block;"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border:1px solid var(--teal-pale); border-radius:8px; padding:12px 14px; background:var(--accent);">
+    <strong style="font-size:9pt; color:var(--navy);">Overall Week Rating</strong>
+    <div style="display:flex; gap:10px; margin-top:8px; font-size:8.5pt; flex-wrap:wrap;">
+      <label style="display:flex;align-items:center;gap:5px;"><span class="cb"></span> 1 — Difficult, low consistency</label>
+      <label style="display:flex;align-items:center;gap:5px;"><span class="cb"></span> 2 — Below average</label>
+      <label style="display:flex;align-items:center;gap:5px;"><span class="cb"></span> 3 — Average, acceptable</label>
+      <label style="display:flex;align-items:center;gap:5px;"><span class="cb"></span> 4 — Good week</label>
+      <label style="display:flex;align-items:center;gap:5px;"><span class="cb"></span> 5 — Excellent, all boxes ticked</label>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SECTION 8 — SIX-MONTH SUMMARY (portrait) ═════ -->
+<div class="page section-break">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <h2>Six-Month Summary<small>Complete at Week 24 · Record only actual measurements — do not estimate</small></h2>
+  </div>
+
+  <div class="info-box">
+    Fill in only what you actually measured. This page is the honest record of 24 weeks of effort. Do not estimate or project results.
+  </div>
+
+  <div class="summary-compare">
+    <div class="compare-box">
+      <h4>Body Composition</h4>
+      <div class="compare-row"><span class="cr-label">Weight — Start</span><span class="cr-val">68 kg</span></div>
+      <div class="compare-row"><span class="cr-label">Weight — Final</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Waist — Start</span><span class="cr-val">88 cm</span></div>
+      <div class="compare-row"><span class="cr-label">Waist — Final</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Chest change</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Arms change</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Thighs change</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+    </div>
+
+    <div class="compare-box">
+      <h4>Performance</h4>
+      <div class="compare-row"><span class="cr-label">Max Push-ups — Start</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Max Push-ups — Final</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Plank — Start (s)</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Plank — Final (s)</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Row Load — Start (kg)</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Row Load — Final (kg)</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+      <div class="compare-row"><span class="cr-label">Biggest strength gain</span><div class="underline-blank" style="width:80px; display:inline-block;"></div></div>
+    </div>
+  </div>
+
+  <!-- Photo comparison -->
+  <div style="border:1.5px dashed var(--teal); border-radius:8px; padding:12px 14px; margin-bottom:14px; background:var(--teal-pale);">
+    <strong style="font-size:9pt; color:var(--teal);">Progress Photo Comparison</strong>
+    <p style="font-size:8.5pt; margin-top:4px; color:var(--navy);">Place Week 1 and Week 24 front / side / back photos side by side. Note genuine visible differences below — posture, muscle definition, body shape. Be objective.</p>
+    <div style="margin-top:8px; border-bottom:1px solid var(--teal-light); height:18px;"></div>
+    <div style="margin-top:8px; border-bottom:1px solid var(--teal-light); height:18px;"></div>
+  </div>
+
+  <div class="two-col mt8">
+    <div>
+      <strong style="font-size:9pt; color:var(--navy); display:block; margin-bottom:6px;">Most Consistent Habits (What worked)</strong>
+      <div style="border:1px solid var(--rule); border-radius:6px; padding:8px;">
+        <div style="border-bottom:1px dashed var(--rule); height:22px; margin-bottom:6px;"></div>
+        <div style="border-bottom:1px dashed var(--rule); height:22px; margin-bottom:6px;"></div>
+        <div style="border-bottom:1px dashed var(--rule); height:22px; margin-bottom:6px;"></div>
+        <div style="height:22px;"></div>
+      </div>
+    </div>
+    <div>
+      <strong style="font-size:9pt; color:var(--navy); display:block; margin-bottom:6px;">Key Lessons Learned</strong>
+      <div style="border:1px solid var(--rule); border-radius:6px; padding:8px;">
+        <div style="border-bottom:1px dashed var(--rule); height:22px; margin-bottom:6px;"></div>
+        <div style="border-bottom:1px dashed var(--rule); height:22px; margin-bottom:6px;"></div>
+        <div style="border-bottom:1px dashed var(--rule); height:22px; margin-bottom:6px;"></div>
+        <div style="height:22px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt12">
+    <strong style="font-size:9pt; color:var(--navy); display:block; margin-bottom:8px;">Next Six-Month Goals (Weeks 25–48)</strong>
+    <table style="font-size:8.5pt;">
+      <thead>
+        <tr>
+          <th style="width:22%">Goal Area</th>
+          <th style="width:40%">Specific Target</th>
+          <th style="width:38%">Strategy / How I Will Achieve It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="label-cell">Strength</td><td class="write-cell tall-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="label-cell">Body Composition</td><td class="write-cell tall-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="label-cell">Nutrition</td><td class="write-cell tall-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="label-cell">Recovery / Sleep</td><td class="write-cell tall-cell"></td><td class="write-cell"></td></tr>
+        <tr><td class="label-cell">Equipment / Next Phase</td><td class="write-cell tall-cell"></td><td class="write-cell"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:16px; background:var(--navy); color:white; border-radius:8px; padding:16px 20px; text-align:center;">
+    <div style="font-size:12pt; font-weight:800; margin-bottom:6px;">24 Weeks Complete.</div>
+    <div style="font-size:8.5pt; color:var(--teal-light); line-height:1.7;">You trained three times a week, every week, for six months. That consistency — not any single session — is the real result. Whatever the numbers say, the habits built here carry directly into week 25 and beyond.</div>
+  </div>
+</div>
+
+</body>
+</html>
